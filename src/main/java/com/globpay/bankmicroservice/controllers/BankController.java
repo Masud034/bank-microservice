@@ -20,7 +20,7 @@ public class BankController {
     }
 
     @GetMapping("/bank/{id}")
-    public Optional<Bank> getBank(@PathVariable String id) {
+    public Bank getBank(@PathVariable String id) {
         return bankService.getBank(id);
     }
 

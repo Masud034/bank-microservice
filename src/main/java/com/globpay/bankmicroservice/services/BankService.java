@@ -15,19 +15,11 @@ public class BankService {
     private BankRepository bankRepository;
 
     public void addBank(Bank newBank) {
-        if (bankRepository.count() > 0) {
-            for (Bank bank : bankRepository.findAll()) {
-                if (bank.getName().equals(newBank.getName())) {
-                    return;
-                }
-                bankRepository.save(newBank);
-            }
-        }
         bankRepository.save(newBank);
     }
 
-    public Optional<Bank> getBank(String id) {
-        return bankRepository.findById(id);
+    public Bank getBank(String id) {
+        return bankRepository.findById(id).get();
     }
 
     public List<Bank> getListOfBanks() {
@@ -39,7 +31,10 @@ public class BankService {
     }
 
     public void updateBank(String id, Bank newBankInfo) {
-        bankRepository.save(newBankInfo);
+        Bank bank = bankRepository.findById(id).get();
+        bank.setName(newBankInfo.getName());
+        bank.setStatus(newBankInfo.isStatus());
+        bankRepository.save(bank);
     }
 
     public void deleteBank(String id) {

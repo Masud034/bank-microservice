@@ -6,18 +6,20 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 import java.util.Objects;
 
 @Entity
 public class Bank {
     @Id
     @GeneratedValue(generator = "system-uuid")
-    @GenericGenerator(name = "system-uuid", strategy = "uuid")
+    @GenericGenerator(name = "system-uuid", strategy = "uuid2")
     private String id;
-
-    @Column(unique = true)
+    @NotEmpty
     private String name;
-
+    @NotNull
     private boolean status;
 
     public Bank() {

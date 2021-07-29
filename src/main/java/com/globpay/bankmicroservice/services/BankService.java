@@ -14,8 +14,8 @@ public class BankService {
     @Autowired
     private BankRepository bankRepository;
 
-    public void addBank(Bank newBank) {
-        bankRepository.save(newBank);
+    public Bank addBank(Bank newBank) {
+        return bankRepository.save(newBank);
     }
 
     public Bank getBank(String id) {
@@ -23,18 +23,14 @@ public class BankService {
     }
 
     public List<Bank> getListOfBanks() {
-        List<Bank> listOfBanks = new ArrayList<>();
-        for (Bank bank : bankRepository.findAll()) {
-            listOfBanks.add(bank);
-        }
-        return listOfBanks;
+        return bankRepository.findAll();
     }
 
-    public void updateBank(String id, Bank newBankInfo) {
+    public Bank updateBank(String id, Bank newBankInfo) {
         Bank bank = bankRepository.findById(id).get();
         bank.setName(newBankInfo.getName());
         bank.setStatus(newBankInfo.isStatus());
-        bankRepository.save(bank);
+        return bankRepository.save(bank);
     }
 
     public void deleteBank(String id) {

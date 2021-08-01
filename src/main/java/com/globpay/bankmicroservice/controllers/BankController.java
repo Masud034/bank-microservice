@@ -21,29 +21,29 @@ public class BankController {
     private BankService bankService;
 
 
-    @GetMapping("/banks")
+    @GetMapping(value = "/banks",produces = "application/json")
     public ResponseEntity<List<Bank>> getAllBanks() {
         return new ResponseEntity<>(bankService.getListOfBanks(), HttpStatus.OK);
     }
 
-    @GetMapping("/bank/{id}")
+    @GetMapping(value = "/bank/{id}", produces = "application/json")
     public ResponseEntity<Bank> getBank(@PathVariable @BankIdMustExist String id) {
         return new ResponseEntity<>(bankService.getBank(id), HttpStatus.OK);
     }
 
-    @PostMapping("/bank")
+    @PostMapping(value = "/bank", consumes = "application/json", produces = "application/json")
     public ResponseEntity<Bank> addBank(@Valid @RequestBody Bank bank) {
         return new ResponseEntity<>(bankService.addBank(bank), HttpStatus.CREATED);
     }
 
-    @PutMapping("/banks/{id}")
-    public ResponseEntity<Bank> updateBank(@PathVariable String id, @RequestBody Bank bank) {
+    @PutMapping(value = "/banks/{id}", consumes = "application/json", produces = "application/json")
+    public ResponseEntity<Bank> updateBank(@PathVariable @BankIdMustExist String id, @RequestBody Bank bank) {
         return new ResponseEntity<>(bankService.updateBank(id, bank), HttpStatus.OK);
     }
 
     @DeleteMapping(value = "/banks/{id}")
-    public ResponseEntity deleteBank(@PathVariable String id) {
+    public ResponseEntity deleteBank(@PathVariable @BankIdMustExist String id) {
         bankService.deleteBank(id);
-        return new ResponseEntity(HttpStatus.NO_CONTENT);
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 }

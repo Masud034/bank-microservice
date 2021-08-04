@@ -1,14 +1,14 @@
 package com.globpay.bankmicroservice.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import org.hibernate.annotations.GenericGenerator;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 @Entity
@@ -22,7 +22,16 @@ public class Bank {
     @NotNull
     private boolean status;
 
+    @OneToMany
+    @JsonIgnoreProperties(value = {"bank"})
+    private List<Branch> branches = new ArrayList<>();
+
+
+    public List<Branch> getBranches() {
+        return branches;
+    }
     public Bank() {
+
     }
 
     public Bank(String id, String name, boolean status) {

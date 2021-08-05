@@ -35,7 +35,8 @@ public class Branch {
     private boolean status;
 
     @ManyToOne
-    @JsonIgnoreProperties(value = {"branches"})
+//    @JsonIgnoreProperties(value = {"branches"})
+    @JsonIgnore
     private Bank bank;
 
     public Branch(){

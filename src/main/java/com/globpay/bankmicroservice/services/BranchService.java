@@ -18,8 +18,8 @@ public class BranchService {
     @Autowired
     private BankRepository bankRepository;
 
-    public List<Branch> getListOfBranches() {
-        return branchRepository.findAll();
+    public List<Branch> getListOfBranches(String bankId) {
+        return branchRepository.findByBankId(bankId);
     }
 
     public Branch getBranch(String branchId){
@@ -27,7 +27,7 @@ public class BranchService {
     }
 
     public Branch addBranch(String bankId,Branch newBranch){
-        bankRepository.findById(bankId).get().getBranches().add(newBranch);
+     //   bankRepository.findById(bankId).get().getBranches().add(newBranch);
         newBranch.setBank(bankRepository.findById(bankId).get());
         return branchRepository.save(newBranch);
     }

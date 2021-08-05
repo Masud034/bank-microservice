@@ -37,7 +37,7 @@ public class BankController {
     }
 
     @PutMapping(value = "/banks/{id}", consumes = "application/json", produces = "application/json")
-    public ResponseEntity<Bank> updateBank(@PathVariable @BankIdMustExist String id, @RequestBody Bank bank) {
+    public ResponseEntity<Bank> updateBank(@PathVariable @BankIdMustExist String id,@Valid @RequestBody Bank bank) {
         return new ResponseEntity<>(bankService.updateBank(id, bank), HttpStatus.OK);
     }
 

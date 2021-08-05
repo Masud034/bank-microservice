@@ -1,5 +1,6 @@
 package com.globpay.bankmicroservice.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import org.hibernate.annotations.GenericGenerator;
 
@@ -23,7 +24,8 @@ public class Bank {
     private boolean status;
 
     @OneToMany
-    @JsonIgnoreProperties(value = {"bank"})
+//    @JsonIgnoreProperties(value = {"bank"})
+    @JsonIgnore
     private List<Branch> branches = new ArrayList<>();
 
 

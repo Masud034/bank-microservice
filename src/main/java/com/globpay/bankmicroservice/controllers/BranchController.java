@@ -28,7 +28,7 @@ public class BranchController {
 
     @GetMapping(value = "/banks/{bankId}/branches",produces = "application/json")
     public ResponseEntity<List<Branch>> getAllBranches(@PathVariable @BankIdMustExist String bankId) {
-        return new ResponseEntity<>(branchService.getListOfBranches(), HttpStatus.OK);
+        return new ResponseEntity<>(branchService.getListOfBranches(bankId), HttpStatus.OK);
     }
 
     @GetMapping(value = "/bank/{bankId}/branch/{branchId}", produces = "application/json")
@@ -39,7 +39,7 @@ public class BranchController {
 
     @PostMapping(value = "/bank/{bankId}/branch")
     public ResponseEntity addBranch(@PathVariable @BankIdMustExist String bankId,
-                                            @RequestBody Branch newBranch){
+                                           @Valid @RequestBody Branch newBranch){
 
         return new ResponseEntity<>(branchService.addBranch(bankId,newBranch),HttpStatus.CREATED);
     }
@@ -47,7 +47,7 @@ public class BranchController {
     @PutMapping(value = "/banks/{bankId}/branches/{branchId}", consumes = "application/json", produces = "application/json")
     public ResponseEntity<Branch> updateBank(@PathVariable @BankIdMustExist String bankId,
                                            @PathVariable @BranchIdMustExist String branchId,
-                                           @RequestBody Branch branch) {
+                                           @Valid @RequestBody Branch branch) {
         return new ResponseEntity<>(branchService.updateBranch(branchId, branch), HttpStatus.OK);
     }
 

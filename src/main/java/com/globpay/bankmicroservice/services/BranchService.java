@@ -2,6 +2,8 @@ package com.globpay.bankmicroservice.services;
 
 import com.globpay.bankmicroservice.entities.Bank;
 import com.globpay.bankmicroservice.entities.Branch;
+import com.globpay.bankmicroservice.exceptions.DuplicateNameException;
+import com.globpay.bankmicroservice.exceptions.DuplicateRoutingNumberException;
 import com.globpay.bankmicroservice.repositories.BankRepository;
 import com.globpay.bankmicroservice.repositories.BranchRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,6 +30,11 @@ public class BranchService {
 
     public Branch addBranch(String bankId,Branch newBranch){
      //   bankRepository.findById(bankId).get().getBranches().add(newBranch);
+        for (Branch branch : branchRepository.findAll()){
+            if (branch.getRoutingNumber().equals(newBranch.getRoutingNumber())){
+                throw new DuplicateRoutingNumberException("Branch's routing number already taken");
+            }
+        }
         newBranch.setBank(bankRepository.findById(bankId).get());
         return branchRepository.save(newBranch);
     }

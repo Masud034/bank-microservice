@@ -44,6 +44,24 @@ public class GlobalRestExceptionHandler extends ResponseEntityExceptionHandler {
         return new ResponseEntity<>(errors, HttpStatus.BAD_REQUEST);
     }
 
+    @ExceptionHandler({DuplicateNameException.class})
+    public ResponseEntity<String> handleDuplicatedName(DuplicateNameException ex) {
+
+        String error = ex.getMessage();
+
+        return new ResponseEntity<>(error, HttpStatus.BAD_REQUEST);
+    }
+
+    @ExceptionHandler({DuplicateRoutingNumberException.class})
+    public ResponseEntity<String> handleDuplicatedRoutingNumber(DuplicateRoutingNumberException ex) {
+
+        String error = ex.getMessage();
+
+        return new ResponseEntity<>(error, HttpStatus.BAD_REQUEST);
+    }
+
+
+
 
 
 

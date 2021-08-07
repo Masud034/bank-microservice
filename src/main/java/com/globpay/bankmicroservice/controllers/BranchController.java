@@ -38,7 +38,7 @@ public class BranchController {
     }
 
     @PostMapping(value = "/bank/{bankId}/branch")
-    public ResponseEntity addBranch(@PathVariable @BankIdMustExist String bankId,
+    public ResponseEntity<Branch> addBranch(@PathVariable @BankIdMustExist String bankId,
                                            @Valid @RequestBody Branch newBranch){
 
         return new ResponseEntity<>(branchService.addBranch(bankId,newBranch),HttpStatus.CREATED);

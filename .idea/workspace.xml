@@ -6,13 +6,14 @@
   <component name="ChangeListManager">
     <list default="true" id="d9499a25-9517-4018-940e-a23446474ef7" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/globpay/bankmicroservice/controllers/BankController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/globpay/bankmicroservice/controllers/BankController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/globpay/bankmicroservice/controllers/BranchController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/globpay/bankmicroservice/controllers/BranchController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/globpay/bankmicroservice/entities/Bank.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/globpay/bankmicroservice/entities/Bank.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/globpay/bankmicroservice/entities/Branch.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/globpay/bankmicroservice/entities/Branch.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/globpay/bankmicroservice/repositories/BranchRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/globpay/bankmicroservice/repositories/BranchRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/globpay/bankmicroservice/exceptions/GlobalRestExceptionHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/globpay/bankmicroservice/exceptions/GlobalRestExceptionHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/globpay/bankmicroservice/services/BankService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/globpay/bankmicroservice/services/BankService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/globpay/bankmicroservice/services/BranchService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/globpay/bankmicroservice/services/BranchService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/globpay/bankmicroservice/controllers/BankController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/globpay/bankmicroservice/controllers/BankController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/globpay/bankmicroservice/controllers/BranchController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/globpay/bankmicroservice/controllers/BranchController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/globpay/bankmicroservice/exceptions/GlobalRestExceptionHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/globpay/bankmicroservice/exceptions/GlobalRestExceptionHandler.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/globpay/bankmicroservice/services/BankService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/globpay/bankmicroservice/services/BankService.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/globpay/bankmicroservice/services/BranchService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/globpay/bankmicroservice/services/BranchService.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -24,6 +25,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Interface" />
+        <option value="JUnit5 Test Class" />
         <option value="Class" />
       </list>
     </option>
@@ -54,14 +56,83 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
+    <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit5" />
+    <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5" value="" />
     <property name="last_opened_file_path" value="$USER_HOME$/IdeaProjects/CourseManagement/CourseManagement" />
   </component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
       <recent name="com.globpay.bankmicroservice.validators" />
     </key>
+    <key name="CreateTestDialog.Recents.Supers">
+      <recent name="" />
+    </key>
+    <key name="CreateTestDialog.RecentsKey">
+      <recent name="com.globpay.bankmicroservice.repositories" />
+      <recent name="com.globpay.bankmicroservice.services" />
+    </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Spring Boot.BankMicroserviceApplication">
+    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="TEST_OBJECT" value="CLASS" />
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="BankServiceTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="bank-microservice" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.globpay.bankmicroservice.services.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.globpay.bankmicroservice.services" />
+      <option name="MAIN_CLASS_NAME" value="com.globpay.bankmicroservice.services.BankServiceTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="BankServiceTest.getBank" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="bank-microservice" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.globpay.bankmicroservice.services.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.globpay.bankmicroservice.services" />
+      <option name="MAIN_CLASS_NAME" value="com.globpay.bankmicroservice.services.BankServiceTest" />
+      <option name="METHOD_NAME" value="getBank" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="BankServiceTest.shouldGetListOfBanks" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="bank-microservice" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.globpay.bankmicroservice.services.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.globpay.bankmicroservice.services" />
+      <option name="MAIN_CLASS_NAME" value="com.globpay.bankmicroservice.services.BankServiceTest" />
+      <option name="METHOD_NAME" value="shouldGetListOfBanks" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="BankMicroserviceApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
       <module name="bank-microservice" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.globpay.bankmicroservice.BankMicroserviceApplication" />
@@ -69,6 +140,13 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JUnit.BankServiceTest" />
+        <item itemvalue="JUnit.BankServiceTest.shouldGetListOfBanks" />
+        <item itemvalue="JUnit.BankServiceTest.getBank" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -90,6 +168,8 @@
       <workItem from="1627982793365" duration="9379000" />
       <workItem from="1628097538528" duration="10383000" />
       <workItem from="1628166344114" duration="3437000" />
+      <workItem from="1628317324819" duration="9692000" />
+      <workItem from="1628344028887" duration="976000" />
     </task>
     <servers />
   </component>

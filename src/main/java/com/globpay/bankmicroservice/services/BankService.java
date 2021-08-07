@@ -1,6 +1,7 @@
 package com.globpay.bankmicroservice.services;
 
 import com.globpay.bankmicroservice.entities.Bank;
+import com.globpay.bankmicroservice.exceptions.DuplicateNameException;
 import com.globpay.bankmicroservice.repositories.BankRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -20,6 +21,11 @@ public class BankService {
     }
 
     public Bank addBank(Bank newBank) {
+        for (Bank bank : bankRepository.findAll()){
+            if (bank.getName().equals(newBank.getName())) {
+                throw new DuplicateNameException("Bank name already taken");
+            }
+        }
         return bankRepository.save(newBank);
     }
 

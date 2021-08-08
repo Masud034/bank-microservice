@@ -10,8 +10,6 @@
       <change beforePath="$PROJECT_DIR$/src/main/java/com/globpay/bankmicroservice/repositories/BranchRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/globpay/bankmicroservice/repositories/BranchRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/globpay/bankmicroservice/services/BankService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/globpay/bankmicroservice/services/BankService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/globpay/bankmicroservice/services/BranchService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/globpay/bankmicroservice/services/BranchService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/globpay/bankmicroservice/services/BankService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/globpay/bankmicroservice/services/BankService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/globpay/bankmicroservice/services/BranchService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/globpay/bankmicroservice/services/BranchService.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/test-classes/com/globpay/bankmicroservice/repositories/BankRepositoryTest.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/target/test-classes/com/globpay/bankmicroservice/services/BankServiceTest.class" beforeDir="false" />
     </list>
@@ -202,7 +200,7 @@
       <workItem from="1628097538528" duration="10383000" />
       <workItem from="1628166344114" duration="3437000" />
       <workItem from="1628317324819" duration="9692000" />
-      <workItem from="1628344028887" duration="4727000" />
+      <workItem from="1628344028887" duration="5338000" />
     </task>
     <servers />
   </component>

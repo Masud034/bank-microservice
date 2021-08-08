@@ -12,5 +12,5 @@ public interface BankRepository extends JpaRepository<Bank, String> {
     @Override
     List<Bank> findAll();
 
-    Bank findByName(String name);
+    boolean existsByName(String name);
 }

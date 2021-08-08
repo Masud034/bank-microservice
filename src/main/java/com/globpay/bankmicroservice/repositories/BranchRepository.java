@@ -8,5 +8,5 @@ import java.util.List;
 public interface BranchRepository extends JpaRepository<Branch, String> {
     public List<Branch> findByBankId(String bankId);
 
-    Branch findByRoutingNumber(String routingNumber);
+    boolean existsByRoutingNumber(String routingNumber);
 }

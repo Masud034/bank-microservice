@@ -29,7 +29,7 @@ public class BranchService {
     }
 
     public Branch addBranch(String bankId,Branch newBranch){
-        if (branchRepository.findByRoutingNumber(newBranch.getRoutingNumber()) != null){
+        if (branchRepository.existsByRoutingNumber(newBranch.getRoutingNumber())){
                 throw new DuplicateRoutingNumberException("Branch's routing number already taken");
         }
         newBranch.setBank(bankRepository.findById(bankId).get());

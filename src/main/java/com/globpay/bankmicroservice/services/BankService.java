@@ -21,7 +21,7 @@ public class BankService {
     }
 
     public Bank addBank(Bank newBank) {
-        if (bankRepository.findByName(newBank.getName()) != null){
+        if (bankRepository.existsByName(newBank.getName())){
             throw new DuplicateNameException("Bank name already taken");
         }
         return bankRepository.save(newBank);

@@ -29,11 +29,8 @@ public class BranchService {
     }
 
     public Branch addBranch(String bankId,Branch newBranch){
-     //   bankRepository.findById(bankId).get().getBranches().add(newBranch);
-        for (Branch branch : branchRepository.findAll()){
-            if (branch.getRoutingNumber().equals(newBranch.getRoutingNumber())){
+        if (branchRepository.findByRoutingNumber(newBranch.getRoutingNumber()) != null){
                 throw new DuplicateRoutingNumberException("Branch's routing number already taken");
-            }
         }
         newBranch.setBank(bankRepository.findById(bankId).get());
         return branchRepository.save(newBranch);

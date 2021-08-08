@@ -273,6 +273,17 @@
     </option>
   </component>
   <component name="RunManager" selected="Spring Boot.BankMicroserviceApplication">
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="generated-requests#1" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" path="$APPLICATION_CONFIG_DIR$/scratches/generated-requests.http" runType="Run single request">
       <method v="2" />
     </configuration>
@@ -328,7 +339,7 @@
       <workItem from="1628317324819" duration="9692000" />
       <workItem from="1628344028887" duration="11734000" />
       <workItem from="1628430140790" duration="406000" />
-      <workItem from="1628430613916" duration="3622000" />
+      <workItem from="1628430613916" duration="8263000" />
     </task>
     <servers />
   </component>

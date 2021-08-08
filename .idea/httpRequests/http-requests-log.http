@@ -1,0 +1,290 @@
+PUT http://localhost:8084/banks/86fa20bd-ebdb-461f-849f-09b08f2085b9/branches/5df9db69-2e9b-46c1-bab9-2cf0810a5120
+Content-Type: application/json
+
+{
+  "name":"jamalpur",
+  "routingNumber": "xbl",
+  "swiftCode": "34fg",
+  "status": true
+}
+
+<> 2021-08-08T192905.200.json
+
+###
+
+GET http://localhost:8084/banks/86fa20bd-ebdb-461f-849f-09b08f2085b9/branches
+
+<> 2021-08-08T192248.200.json
+
+###
+
+POST http://localhost:8084/bank/86fa20bd-ebdb-461f-849f-09b08f2085b9/branch
+Content-Type: application/json
+
+{
+  "name":"muradpur",
+  "routingNumber": "xbl",
+  "swiftCode": "34fg",
+  "status": true
+}
+
+<> 2021-08-08T192224.201.json
+
+###
+
+GET http://localhost:8084/bank/86fa20bd-ebdb-461f-849f-09b08f2085b9
+Accept: application/json
+
+<> 2021-08-08T192133.200.json
+
+###
+
+GET http://localhost:8084/banks
+
+<> 2021-08-08T192116.200.json
+
+###
+
+POST http://localhost:8084/bank
+Content-Type: application/json
+
+{
+  "name": "IFIC Bank",
+  "status": true
+}
+
+<> 2021-08-08T192100.201.json
+
+###
+
+GET http://localhost:8084/banks
+
+<> 2021-08-08T192041.200.json
+
+###
+
+GET http://localhost:8084/banks
+
+<> 2021-08-08T164533.200.json
+
+###
+
+DELETE http://localhost:8084/banks/f9146d02-882b-46d0-8641-04376b0585f0
+
+###
+
+PUT http://localhost:8084/banks/f9146d02-882b-46d0-8641-04376b0585f0
+Content-Type: application/json
+
+{
+   "name":"GFIC Bank",
+   "status": true
+}
+
+<> 2021-08-08T164420.200.json
+
+###
+
+PUT http://localhost:8084/banks/f9146d02-882b-46d0-8641-04376b0585f0
+Content-Type: application/json
+
+{
+   "name":"GFIC Bank"
+}
+
+<> 2021-08-08T164327.200.json
+
+###
+
+GET http://localhost:8084/bank/f9146d02-882b-46d0-8641-04376b0585f0
+Accept: application/json
+
+<> 2021-08-08T164051.200.json
+
+###
+
+GET http://localhost:8084/bank/{{id}}=f9146d02-882b-46d0-8641-04376b0585f0
+Accept: application/json
+
+###
+
+GET http://localhost:8084/bank/{{id}}:f9146d02-882b-46d0-8641-04376b0585f0
+Accept: application/json
+
+###
+
+GET http://localhost:8084/bank?id=f9146d02-882b-46d0-8641-04376b0585f0
+
+###
+
+GET http://localhost:8084/bank?id=f9146d02-882b-46d0-8641-04376b0585f0
+Accept: application/json
+
+###
+
+GET http://localhost:8084/bank?id=f9146d02-882b-46d0-8641-04376b0585f0
+Accept: application/json
+
+###
+
+GET http://localhost:8084/bank/{{id}}=f9146d02-882b-46d0-8641-04376b0585f0
+Accept: application/json
+
+###
+
+GET http://localhost:8084/bank/{{id}}=f9146d02-882b-46d0-8641-04376b0585f0
+Accept: application/json
+
+###
+
+GET http://localhost:8084/bank/{{id}}}}=f9146d02-882b-46d0-8641-04376b0585f0
+Accept: application/json
+
+###
+
+GET http://localhost:8084/bank/id=f9146d02-882b-46d0-8641-04376b0585f0
+Accept: application/json
+
+<> 2021-08-08T163214.400.json
+
+###
+
+GET http://localhost:8084/bank/id=f9146d02-882b-46d0-8641-04376b0585f0
+Accept: application/json
+
+<> 2021-08-08T163112.400.json
+
+###
+
+GET http://localhost:8084/banks
+
+<> 2021-08-08T163053.200.json
+
+###
+
+GET http://localhost:8084/bank/id=f9146d02-882b-46d0-8641-04376b0585f0
+Accept: application/json
+
+<> 2021-08-08T163032.400.json
+
+###
+
+GET http://localhost:8084/bank/id="f9146d02-882b-46d0-8641-04376b0585f0"
+Accept: application/json
+
+###
+
+GET http://localhost:8084/bank/{{f9146d02-882b-46d0-8641-04376b0585f0}}
+Accept: application/json
+
+###
+
+GET http://localhost:8084/bank/{{f9146d02-882b-46d0-8641-04376b0585f0}}
+Accept: application/json
+
+###
+
+GET http://localhost:8084/banks
+
+<> 2021-08-08T161500.200.json
+
+###
+
+POST http://localhost:8084/bank
+Content-Type: application/json
+
+{
+  "name": "IFIC Bank",
+  "status": true
+}
+
+<> 2021-08-08T161445.400.txt
+
+###
+
+GET http://localhost:8084/bank/{{f9146d02-882b-46d0-8641-04376b0585f0}}
+
+###
+
+GET http://localhost:8084/banks
+
+<> 2021-08-08T161318.200.json
+
+###
+
+GET http://localhost:8084/banks
+
+<> 2021-08-08T161234.200.json
+
+###
+
+POST http://localhost:8084/bank
+Content-Type: application/json
+
+{
+  "name": "IFIC Bank",
+  "status": true
+}
+
+<> 2021-08-08T161215.400.txt
+
+###
+
+POST http://localhost:8084/bank
+Content-Type: application/json
+
+{
+  "name": "IFIC Bank",
+  "status": true
+}
+
+<> 2021-08-08T161112.400.txt
+
+###
+
+POST http://localhost:8084/bank
+Content-Type: application/json
+
+{
+  "name": "IFIC Bank",
+  "status": true
+}
+
+<> 2021-08-08T161058.201.json
+
+###
+
+POST http://localhost:8084/bank
+Content-Type: application/json
+
+{
+  "name": "IFIC Bank",
+  "status": true;
+}
+
+###
+
+POST http://localhost:8084/bank
+Content-Type: application/json
+
+{
+  "name": "IFIC Bank",
+  "status": true;
+}
+
+###
+
+POST http://localhost:8084/bank
+
+###
+
+GET http://localhost:8084/banks
+
+<> 2021-08-08T160555.200.json
+
+###
+
+GET http://localhost:8084/banks
+
+###
+

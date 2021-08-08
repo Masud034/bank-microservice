@@ -16,7 +16,6 @@ import java.util.Objects;
 
 @Entity
 public class Branch {
-
     @Id
     @GeneratedValue(generator = "system-uuid")
     @GenericGenerator(name = "system-uuid", strategy = "uuid2")

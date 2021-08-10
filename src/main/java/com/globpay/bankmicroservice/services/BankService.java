@@ -1,8 +1,10 @@
 package com.globpay.bankmicroservice.services;
 
+import com.fasterxml.jackson.databind.util.BeanUtil;
 import com.globpay.bankmicroservice.entities.Bank;
 import com.globpay.bankmicroservice.exceptions.DuplicateNameException;
 import com.globpay.bankmicroservice.repositories.BankRepository;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.List;
@@ -28,10 +30,9 @@ public class BankService {
     }
 
     public Bank updateBank(String bankId, Bank newBankInfo) {
-        Bank bank = bankRepository.findById(bankId).get();
-        bank.setName(newBankInfo.getName());
-        bank.setStatus(newBankInfo.isStatus());
-        return bankRepository.save(bank);
+        Bank oldBank = bankRepository.findById(bankId).get();
+        BeanUtils.copyProperties(newBankInfo, oldBank);
+        return bankRepository.save(oldBank);
     }
 
     public void deleteBank(String bankId) {

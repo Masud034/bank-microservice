@@ -2,6 +2,7 @@ package com.globpay.bankmicroservice.controllers;
 
 import com.globpay.bankmicroservice.entities.Bank;
 import com.globpay.bankmicroservice.entities.Branch;
+import com.globpay.bankmicroservice.model.ApiResponse;
 import com.globpay.bankmicroservice.services.BankService;
 import com.globpay.bankmicroservice.services.BranchService;
 import com.globpay.bankmicroservice.validators.BankIdMustExist;
@@ -27,36 +28,36 @@ public class BranchController {
     private BankService bankService;
 
     @GetMapping(value = "/banks/{bankId}/branches",produces = "application/json")
-    public ResponseEntity<List<Branch>> getAllBranches(@PathVariable @BankIdMustExist String bankId) {
-        return new ResponseEntity<>(branchService.getListOfBranches(bankId), HttpStatus.OK);
+    public ResponseEntity<ApiResponse> getAllBranches(@PathVariable @BankIdMustExist String bankId) {
+        return new ResponseEntity<>(new ApiResponse("Success", branchService.getListOfBranches(bankId)), HttpStatus.OK);
     }
 
     @GetMapping(value = "/bank/{bankId}/branch/{branchId}", produces = "application/json")
-    public ResponseEntity<Branch> getBranch(@PathVariable @BankIdMustExist String bankId,
+    public ResponseEntity<ApiResponse> getBranch(@PathVariable @BankIdMustExist String bankId,
                                             @PathVariable @BranchIdMustExist String branchId) {
-        return new ResponseEntity<>(branchService.getBranch(branchId), HttpStatus.OK);
+        return new ResponseEntity<>(new ApiResponse("Success", branchService.getBranch(bankId, branchId)), HttpStatus.OK);
     }
 
     @PostMapping(value = "/bank/{bankId}/branch")
-    public ResponseEntity<Branch> addBranch(@PathVariable @BankIdMustExist String bankId,
+    public ResponseEntity<ApiResponse> addBranch(@PathVariable @BankIdMustExist String bankId,
                                            @Valid @RequestBody Branch newBranch){
 
-        return new ResponseEntity<>(branchService.addBranch(bankId,newBranch),HttpStatus.CREATED);
+        return new ResponseEntity<>(new ApiResponse("Success", branchService.addBranch(bankId, newBranch)),HttpStatus.CREATED);
     }
 
     @PutMapping(value = "/banks/{bankId}/branches/{branchId}", consumes = "application/json", produces = "application/json")
-    public ResponseEntity<Branch> updateBank(@PathVariable @BankIdMustExist String bankId,
+    public ResponseEntity<ApiResponse> updateBank(@PathVariable @BankIdMustExist String bankId,
                                            @PathVariable @BranchIdMustExist String branchId,
                                            @Valid @RequestBody Branch branch) {
-        return new ResponseEntity<>(branchService.updateBranch(branchId, branch), HttpStatus.OK);
+        return new ResponseEntity<>(new ApiResponse("Success", branchService.updateBranch(bankId, branchId, branch)), HttpStatus.OK);
     }
 
     @DeleteMapping(value = "/banks/{bankId}/branches/{branchId}")
-    public ResponseEntity deleteBranch(@PathVariable @BankIdMustExist String bankId,
+    public ResponseEntity<ApiResponse> deleteBranch(@PathVariable @BankIdMustExist String bankId,
                                        @PathVariable @BranchIdMustExist String branchId){
-        bankService.getBank(bankId).getBranches().remove(branchService.getBranch(branchId));
-        branchService.deleteBranch(branchId);
-        return new ResponseEntity(HttpStatus.NO_CONTENT);
+        bankService.getBank(bankId).getBranches().remove(branchService.getBranch(bankId, branchId));
+        branchService.deleteBranch(bankId, branchId);
+        return new ResponseEntity(new ApiResponse("Deleted"), HttpStatus.NO_CONTENT);
     }
 
 }

@@ -1,5 +1,6 @@
 package com.globpay.bankmicroservice.exceptions;
 
+import com.globpay.bankmicroservice.model.ApiResponse;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -26,12 +27,11 @@ public class GlobalRestExceptionHandler extends ResponseEntityExceptionHandler {
         for (FieldError fieldError: fieldErrors){
             errors.add(fieldError.getField() + " " + fieldError.getDefaultMessage());
         }
-
-        return handleExceptionInternal(ex, errors, headers, status, request);
+        return new ResponseEntity<>(new ApiResponse("Invalid Properties", errors),status);
     }
 
     @ExceptionHandler({ConstraintViolationException.class})
-    public ResponseEntity<List<String>> handleConstraintViolation(ConstraintViolationException ex, WebRequest webRequest) {
+    public ResponseEntity<ApiResponse> handleConstraintViolation(ConstraintViolationException ex, WebRequest webRequest) {
 
         List<String> errors = new ArrayList<>();
 
@@ -41,28 +41,24 @@ public class GlobalRestExceptionHandler extends ResponseEntityExceptionHandler {
             errors.add(constraintViolation.getMessage());
         }
 
-        return new ResponseEntity<>(errors, HttpStatus.BAD_REQUEST);
+        return new ResponseEntity<>(new ApiResponse("Validation failed",errors), HttpStatus.BAD_REQUEST);
     }
 
     @ExceptionHandler({DuplicateNameException.class})
-    public ResponseEntity<String> handleDuplicatedName(DuplicateNameException ex) {
+    public ResponseEntity<ApiResponse> handleDuplicatedName(DuplicateNameException ex) {
 
-        String error = ex.getMessage();
+        List<String> errors = new ArrayList<>();
+        errors.add(ex.getMessage());
 
-        return new ResponseEntity<>(error, HttpStatus.BAD_REQUEST);
+        return new ResponseEntity<>(new ApiResponse("Failed", errors), HttpStatus.BAD_REQUEST);
     }
 
     @ExceptionHandler({DuplicateRoutingNumberException.class})
-    public ResponseEntity<String> handleDuplicatedRoutingNumber(DuplicateRoutingNumberException ex) {
+    public ResponseEntity<ApiResponse> handleDuplicatedRoutingNumber(DuplicateRoutingNumberException ex) {
 
-        String error = ex.getMessage();
+        List<String> errors = new ArrayList<>();
+        errors.add(ex.getMessage());
 
-        return new ResponseEntity<>(error, HttpStatus.BAD_REQUEST);
+        return new ResponseEntity<>(new ApiResponse("Failed", errors), HttpStatus.BAD_REQUEST);
     }
-
-
-
-
-
-
 }

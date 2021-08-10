@@ -6,6 +6,7 @@ import com.globpay.bankmicroservice.exceptions.DuplicateNameException;
 import com.globpay.bankmicroservice.exceptions.DuplicateRoutingNumberException;
 import com.globpay.bankmicroservice.repositories.BankRepository;
 import com.globpay.bankmicroservice.repositories.BranchRepository;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -20,11 +21,11 @@ public class BranchService {
     @Autowired
     private BankRepository bankRepository;
 
-    public List<Branch> getListOfBranches(String bankId) {
+    public List<Branch> getListOfBranches(String bankId){
         return branchRepository.findByBankId(bankId);
     }
 
-    public Branch getBranch(String branchId){
+    public Branch getBranch(String bankId, String branchId){
         return branchRepository.findById(branchId).get();
     }
 
@@ -36,16 +37,13 @@ public class BranchService {
         return branchRepository.save(newBranch);
     }
 
-    public Branch updateBranch(String branchId, Branch newBranchInfo){
-        Branch branch = branchRepository.findById(branchId).get();
-        branch.setName(newBranchInfo.getName());
-        branch.setRoutingNumber(newBranchInfo.getRoutingNumber());
-        branch.setSwiftCode(newBranchInfo.getSwiftCode());
-        branch.setStatus(newBranchInfo.isStatus());
-        return branchRepository.save(branch);
+    public Branch updateBranch(String bankId, String branchId, Branch newBranchInfo){
+        Branch oldBranch = branchRepository.findById(branchId).get();
+        BeanUtils.copyProperties(newBranchInfo, oldBranch);
+        return branchRepository.save(oldBranch);
     }
 
-    public void deleteBranch(String branchId){
+    public void deleteBranch(String bankId, String branchId){
         branchRepository.deleteById(branchId);
     }
 

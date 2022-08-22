@@ -21,10 +21,11 @@ public class Bank {
     @GenericGenerator(name = "system-uuid", strategy = "uuid2")
     private String id;
 
-    @NotNull
-    @NotBlank
     @NotEmpty
     private String name;
+
+    @NotEmpty
+    private String swiiftCode;
 
     private boolean status = true;
 }

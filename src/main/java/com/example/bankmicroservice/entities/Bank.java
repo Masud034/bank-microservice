@@ -25,7 +25,7 @@ public class Bank {
     private String name;
 
     @NotEmpty
-    private String swiiftCode;
+    private String swiftCode;
 
     private boolean status = true;
 }

@@ -1,5 +1,6 @@
 package com.example.bankmicroservice.entities;
 
+import com.example.bankmicroservice.validators.BankIdMustExist;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -24,8 +25,9 @@ public class Branch {
     @GenericGenerator(name = "system-uuid", strategy = "uuid2")
     private String id;
 
-    @NotEmpty
     private String bankId;
+
+    private String districtId;
 
     @NotEmpty
     private String name;
@@ -33,6 +35,6 @@ public class Branch {
     @NotEmpty
     private String routingNumber;
 
-
+    private boolean status = true;
 
 }

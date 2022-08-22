@@ -44,4 +44,22 @@ public class GlobalRestExceptionHandler extends ResponseEntityExceptionHandler {
 
         return new ResponseEntity<>(new ApiResponse("Validation failed", errors), HttpStatus.BAD_REQUEST);
     }
+
+    @ExceptionHandler({DuplicateRoutingNumberException.class})
+    public ResponseEntity<ApiResponse> handleDuplicateRoutingNumber(DuplicateRoutingNumberException ex) {
+
+        List<String> errors = new ArrayList<>();
+        errors.add(ex.getMessage());
+
+        return new ResponseEntity<>(new ApiResponse("Failed", errors), HttpStatus.BAD_REQUEST);
+    }
+
+    @ExceptionHandler({DuplicateDistrictException.class})
+    public ResponseEntity<ApiResponse> handleDuplicateDistrictException(DuplicateDistrictException ex) {
+
+        List<String> errors = new ArrayList<>();
+        errors.add(ex.getMessage());
+
+        return new ResponseEntity<>(new ApiResponse("Failed", errors), HttpStatus.BAD_REQUEST);
+    }
 }

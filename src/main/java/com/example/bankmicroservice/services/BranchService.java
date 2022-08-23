@@ -2,13 +2,14 @@ package com.example.bankmicroservice.services;
 import com.example.bankmicroservice.entities.Branch;
 import com.example.bankmicroservice.exceptions.DuplicateRoutingNumberException;
 import com.example.bankmicroservice.repositories.BranchRepository;
-import com.googlecode.jmapper.JMapper;
 import lombok.RequiredArgsConstructor;
 import org.apache.catalina.mapper.Mapper;
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 
+import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -25,7 +26,10 @@ public class BranchService {
     }
 
     public List<Branch> getAllBranches(String bankId, String districtId) {
-        return branchRepository.findByBankIdAndDistrictIdAndStatus(bankId, districtId, true);
+        return branchRepository.findByBankIdAndDistrictIdAndStatus(bankId, districtId, true)
+                .stream()
+                .sorted(Comparator.comparing(Branch :: getName))
+                .collect(Collectors.toList());
     }
 
     public Branch updateBranchDetails(String branchId, Branch branch) {

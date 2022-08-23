@@ -8,7 +8,9 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Transactional
 @Service
@@ -27,7 +29,10 @@ public class DistrictService {
     }
 
     public List<District> getAllDistrict(String bankId) {
-        return districtRepository.findAllByBankIdAndStatus(bankId, true);
+        return districtRepository.findAllByBankIdAndStatus(bankId, true)
+                .stream()
+                .sorted(Comparator.comparing(District :: getName))
+                .collect(Collectors.toList());
     }
 
     public District updateDistrictDetails(String districtId, District district) {

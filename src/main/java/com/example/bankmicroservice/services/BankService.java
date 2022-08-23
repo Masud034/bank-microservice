@@ -7,7 +7,10 @@ import com.example.bankmicroservice.repositories.BranchRepository;
 import com.example.bankmicroservice.repositories.DistrictRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+
+import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -30,7 +33,10 @@ public class BankService {
     }
 
     public List<Bank> getAllBankDetails() {
-        return bankRepository.findAllByStatus(true);
+        return bankRepository.findAllByStatus(true)
+                .stream()
+                .sorted(Comparator.comparing(Bank::getName))
+                .collect(Collectors.toList());
     }
 
     public Bank updateBankDetails(String bankId, Bank bank) {

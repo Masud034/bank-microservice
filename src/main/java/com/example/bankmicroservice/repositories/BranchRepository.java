@@ -10,5 +10,9 @@ import java.util.List;
 public interface BranchRepository extends JpaRepository<Branch, String> {
     boolean existsByRoutingNumber(String routingNumber);
 
-    List<Branch> findByBankIdAndDistrictId(String bankId, String districtId);
+    List<Branch> findByBankIdAndDistrictIdAndStatus(String bankId, String districtId, boolean b);
+
+    void deleteAllByBankId(String bankId);
+
+    void deleteByDistrictId(String districtId);
 }

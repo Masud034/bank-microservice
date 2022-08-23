@@ -2,17 +2,22 @@ package com.example.bankmicroservice.services;
 
 import com.example.bankmicroservice.entities.District;
 import com.example.bankmicroservice.exceptions.DuplicateDistrictException;
+import com.example.bankmicroservice.repositories.BranchRepository;
 import com.example.bankmicroservice.repositories.DistrictRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.List;
 
+@Transactional
 @Service
 @RequiredArgsConstructor
 public class DistrictService {
 
     private final DistrictRepository districtRepository;
+
+    private final BranchRepository branchRepository;
 
     public District addDistrict(String bankId, District district) {
         if (districtRepository.existsByNameAndBankId(district.getName(), bankId))
@@ -22,6 +27,18 @@ public class DistrictService {
     }
 
     public List<District> getAllDistrict(String bankId) {
-        return districtRepository.findAllByBankId(bankId);
+        return districtRepository.findAllByBankIdAndStatus(bankId, true);
+    }
+
+    public District updateDistrictDetails(String districtId, District district) {
+        District fetchedDistrict = districtRepository.findById(districtId).get();
+        fetchedDistrict.setName(district.getName());
+        fetchedDistrict.setStatus(district.isStatus());
+        return districtRepository.save(fetchedDistrict);
+    }
+
+    public void deleteDistrict(String districtId) {
+        districtRepository.deleteById(districtId);
+        branchRepository.deleteByDistrictId(districtId);
     }
 }

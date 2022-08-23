@@ -8,7 +8,6 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
@@ -22,16 +21,19 @@ public class BankController {
 
     private final BankService bankService;
 
+    //adds single bank info in the system
     @PostMapping(value = EndpointsUtils.ADD_BANK_DETAILS, consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Bank> addBankDetails(@Valid @RequestBody Bank bank) {
         return new ResponseEntity<>(bankService.addBankDetails(bank), HttpStatus.CREATED);
     }
 
+    //retrieves bank info
     @GetMapping(value = EndpointsUtils.GET_BANK_DETAILS)
     public ResponseEntity<Bank> getBankDetails(@PathVariable @BankIdMustExist String bankId) {
         return new ResponseEntity<>(bankService.getBankDetails(bankId), HttpStatus.OK);
     }
 
+    //returns all list banks in the system
     @GetMapping(value = EndpointsUtils.GET_ALL_BANK_DETAILS)
     public ResponseEntity<List<Bank>> getAllBankDetails() {
         return new ResponseEntity<>(bankService.getAllBankDetails(), HttpStatus.OK);
@@ -42,6 +44,7 @@ public class BankController {
         return new ResponseEntity<>(bankService.updateBankDetails(bankId, bank), HttpStatus.OK);
     }
 
+    //deletes a bank info with all districts and branches mapped with this bank
     @DeleteMapping(value = EndpointsUtils.DELETE_BANK_DETAILS)
     public ResponseEntity<String> deleteBankDetails(@PathVariable @BankIdMustExist String bankId) {
         bankService.deleteBankDetails(bankId);

@@ -62,4 +62,13 @@ public class GlobalRestExceptionHandler extends ResponseEntityExceptionHandler {
 
         return new ResponseEntity<>(new ApiResponse("Failed", errors), HttpStatus.BAD_REQUEST);
     }
+
+    @ExceptionHandler({DuplicateBankEntryException.class})
+    public ResponseEntity<ApiResponse> handlDuplicateBankEntryException(DuplicateBankEntryException ex) {
+
+        List<String> errors = new ArrayList<>();
+        errors.add(ex.getMessage());
+
+        return new ResponseEntity<>(new ApiResponse("Failed", errors), HttpStatus.BAD_REQUEST);
+    }
 }

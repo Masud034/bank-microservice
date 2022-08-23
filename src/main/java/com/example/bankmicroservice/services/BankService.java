@@ -1,7 +1,10 @@
 package com.example.bankmicroservice.services;
 
 import com.example.bankmicroservice.entities.Bank;
+import com.example.bankmicroservice.exceptions.DuplicateBankEntryException;
 import com.example.bankmicroservice.repositories.BankRepository;
+import com.example.bankmicroservice.repositories.BranchRepository;
+import com.example.bankmicroservice.repositories.DistrictRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import java.util.List;
@@ -12,7 +15,13 @@ public class BankService {
 
     private final BankRepository bankRepository;
 
+    private final DistrictRepository districtRepository;
+
+    private final BranchRepository branchRepository;
+
     public Bank addBankDetails(Bank bank) {
+        if (bankRepository.existsBySwiftCode(bank.getSwiftCode()))
+            throw new DuplicateBankEntryException("This bank is already registered");
         return bankRepository.save(bank);
     }
 
@@ -21,7 +30,7 @@ public class BankService {
     }
 
     public List<Bank> getAllBankDetails() {
-        return bankRepository.findAll();
+        return bankRepository.findAllByStatus(true);
     }
 
     public Bank updateBankDetails(String bankId, Bank bank) {
@@ -33,5 +42,7 @@ public class BankService {
 
     public void deleteBankDetails(String bankId) {
         bankRepository.deleteById(bankId);
+        districtRepository.deleteAllByBankId(bankId);
+        branchRepository.deleteAllByBankId(bankId);
     }
 }

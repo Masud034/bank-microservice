@@ -6,8 +6,13 @@ import com.example.bankmicroservice.repositories.BankRepository;
 import com.example.bankmicroservice.repositories.BranchRepository;
 import com.example.bankmicroservice.repositories.DistrictRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.Cacheable;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -31,12 +36,18 @@ public class BankService {
     public Bank getBankDetails(String bankId) {
         return bankRepository.findById(bankId).get();
     }
-
+    @Cacheable(value = "banks")
     public List<Bank> getAllBankDetails() {
         return bankRepository.findAllByStatus(true)
                 .stream()
                 .sorted(Comparator.comparing(Bank::getName))
                 .collect(Collectors.toList());
+    }
+
+    @Scheduled(fixedRate = 2000)
+    @CacheEvict(value = "banks", allEntries = true)
+    public void clearCache() {
+        System.out.println("I was called at " + LocalTime.now());
     }
 
     public Bank updateBankDetails(String bankId, Bank bank) {

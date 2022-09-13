@@ -35,7 +35,7 @@ public class BankController {
 
     //returns all list banks in the system
     @GetMapping(value = EndpointsUtils.GET_ALL_BANK_DETAILS)
-    public ResponseEntity<List<Bank>> getAllBankDetails() {
+    public ResponseEntity<List<Bank>> getAllBankDetails() throws InterruptedException {
         return new ResponseEntity<>(bankService.getAllBankDetails(), HttpStatus.OK);
     }
 
